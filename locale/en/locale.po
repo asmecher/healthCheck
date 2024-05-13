@@ -20,8 +20,5 @@ msgstr "A plugin to check the health of your installation."
 msgid "plugins.generic.healthCheck.activePlugins"
 msgstr "Active Plugins"
 
-msgid "plugins.generic.pluginTemplate.publicationStatement"
-msgstr "Publication Statement"
-
 msgid "plugins.generic.pluginTemplate.publicationStatement.description"
 msgstr "Add a publication statement that you would like to appear on every publication's landing page."
