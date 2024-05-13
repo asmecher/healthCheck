@@ -167,12 +167,6 @@ class HealthCheckPlugin extends GenericPlugin
         $contextId = $context ? $context->getId() : Application::CONTEXT_SITE;
         $publicationStatement = $this->getSetting($contextId, 'publicationStatement');
 
-        // If the journal or press does not have a publication statement,
-        // check if there is one saved for the site.
-        if (!$publicationStatement && $contextId !== Application::CONTEXT_SITE) {
-            $publicationStatement = $this->getSetting(Application::CONTEXT_SITE, 'publicationStatement');
-        }
-
         // Do not modify the output if there is no publication statement
         if (!$publicationStatement) {
             return false;
