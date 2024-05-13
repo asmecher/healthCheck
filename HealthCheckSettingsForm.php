@@ -21,9 +21,7 @@ use PKP\db\DAORegistry;
 use PKP\form\Form;
 use PKP\form\validation\FormValidatorCSRF;
 use PKP\form\validation\FormValidatorPost;
-use PKP\plugins\Plugin;
-use PKP\plugins\PluginGalleryDAO;
-use PluginRegistry;
+use PKP\plugins\PluginRegistry;
 
 class HealthCheckSettingsForm extends Form {
 
