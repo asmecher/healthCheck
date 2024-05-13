@@ -22,6 +22,7 @@ use PKP\form\Form;
 use PKP\form\validation\FormValidatorCSRF;
 use PKP\form\validation\FormValidatorPost;
 use PKP\plugins\PluginRegistry;
+use PKP\config\Config;
 
 class HealthCheckSettingsForm extends Form {
 
@@ -104,6 +105,12 @@ class HealthCheckSettingsForm extends Form {
 
         // Assign to template variable.
         $templateMgr->assign('pluginList', $list);
+
+        // Assign OJS configuration related items to the template
+        $templateMgr->assign([
+            'isSaltConfigured' => Config::getVar('security', 'salt') != null,
+        ]);
+
         return parent::fetch($request, $template, $display);
     }
 

@@ -17,6 +17,15 @@ msgstr "Health Check Plugin"
 msgid "plugins.generic.healthCheck.description"
 msgstr "A plugin to check the health of your installation."
 
+msgid "plugins.generic.healthCheck.ojsConfig"
+msgstr "OJS Configuration"
+
+msgid "plugins.generic.healthCheck.ojsConfig.saltConfigured"
+msgstr "The security salt is properly configured in the config.inc.php configuration file."
+
+msgid "plugins.generic.healthCheck.ojsConfig.saltConfigured"
+msgstr "The security salt NOT correctly configured in the config.inc.php configuration file. You will need to edit your configuration file to add it."
+
 msgid "plugins.generic.healthCheck.activePlugins"
 msgstr "Active Plugins"
 

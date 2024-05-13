@@ -32,5 +32,16 @@
         </ul>
     </div>
 
+    <h3>{translate key="plugins.generic.healthCheck.ojsConfig"}</h3>
+        <ul id="plugin-list">
+	    <li>
+		{if $isSaltConfigured}
+		    {translate key="plugins.generic.healthCheck.ojsConfig.saltConfigured"}
+		{else}
+		    {translate key="plugins.generic.healthCheck.ojsConfig.saltNotConfigured"}
+		{/if}
+	</ul>
+
+
 	{fbvFormButtons submitText="common.save"}
 </form>
