@@ -22,7 +22,11 @@
 	<!-- Always add the csrf token to secure your form -->
 	{csrf}
 
-	Here we are.
+	All Active Plugins:
+
+    <div id="plugin-list-section">
+        {$pluginList|strip_unsafe_html}
+    </div>
 
 	{fbvFormButtons submitText="common.save"}
 </form>
