@@ -17,6 +17,9 @@ msgstr "Health Check Plugin"
 msgid "plugins.generic.healthCheck.description"
 msgstr "A plugin to check the health of your installation."
 
+msgid "plugins.generic.healthCheck.activePlugins"
+msgstr "Active Plugins"
+
 msgid "plugins.generic.pluginTemplate.publicationStatement"
 msgstr "Publication Statement"
 
