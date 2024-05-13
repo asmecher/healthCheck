@@ -17,9 +17,11 @@ use APP\core\Application;
 use APP\notification\Notification;
 use APP\notification\NotificationManager;
 use APP\template\TemplateManager;
+use PKP\db\DAORegistry;
 use PKP\form\Form;
 use PKP\form\validation\FormValidatorCSRF;
 use PKP\form\validation\FormValidatorPost;
+use PKP\plugins\PluginRegistry;
 
 class HealthCheckSettingsForm extends Form {
 
@@ -95,6 +97,31 @@ class HealthCheckSettingsForm extends Form {
         $templateMgr = TemplateManager::getManager($request);
         $templateMgr->assign('pluginName', $this->plugin->getName());
 
+        // Fetch all installed plugins.
+        $plugins = PluginRegistry::getAllPlugins();
+
+        // Use version DAO to retrieve version.
+        $versionDao = DAORegistry::getDAO('VersionDAO');
+
+        // Begin assembling markup for settings page.
+        $list = [];
+        foreach ($plugins as $plugin) {
+
+            // Extract version for given plugin from version DAO.
+            $pluginInfo = explode('/', $plugin->getPluginPath());
+            $productType = $pluginInfo[0] . '.' . $pluginInfo[1];
+            $productName = $pluginInfo[2];
+            $currentVersion = $versionDao->getCurrentVersion($productType, $productName);
+
+            // Assemble list item.
+            $list[] = [
+                'name' => $plugin->getName(),
+                'version' => $currentVersion->getVersionString(),
+            ];
+        }
+
+        // Assign to template variable.
+        $templateMgr->assign('pluginList', $list);
         return parent::fetch($request, $template, $display);
     }
 

@@ -22,7 +22,15 @@
 	<!-- Always add the csrf token to secure your form -->
 	{csrf}
 
-	Here we are.
+	All Active Plugins:
+
+    <div id="plugin-list-section">
+        <ul id="plugin-list">
+            {foreach from=$pluginList item=plugin}
+                <li>{$plugin.name|escape} ({$plugin.version})</li>
+            {/foreach}
+        </ul>
+    </div>
 
 	{fbvFormButtons submitText="common.save"}
 </form>
