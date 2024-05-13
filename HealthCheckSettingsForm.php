@@ -114,7 +114,10 @@ class HealthCheckSettingsForm extends Form {
             $currentVersion = $versionDao->getCurrentVersion($productType, $productName);
 
             // Assemble list item.
-            $list[] =  $plugin->getName() . ' (' . $currentVersion->getVersionString() . ')';
+            $list[] = [
+                'name' => $plugin->getName(),
+                'version' => $currentVersion->getVersionString(),
+            ];
         }
 
         // Assign to template variable.
