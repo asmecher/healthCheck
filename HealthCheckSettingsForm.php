@@ -22,6 +22,7 @@ use PKP\form\Form;
 use PKP\form\validation\FormValidatorCSRF;
 use PKP\form\validation\FormValidatorPost;
 use PKP\plugins\PluginRegistry;
+use PKP\config\Config;
 
 class HealthCheckSettingsForm extends Form {
 
@@ -60,25 +61,7 @@ class HealthCheckSettingsForm extends Form {
             ? $context->getId()
             : Application::CONTEXT_SITE;
 
-        $this->setData(
-            'publicationStatement',
-            $this->plugin->getSetting(
-                $contextId,
-                'publicationStatement'
-            )
-        );
-
         parent::initData();
-    }
-
-    /**
-     * Load data that was submitted with the form
-     */
-    public function readInputData()
-    {
-        $this->readUserVars(['publicationStatement']);
-
-        parent::readInputData();
     }
 
     /**
