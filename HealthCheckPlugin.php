@@ -8,7 +8,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
  * @class HealthCheckPlugin
- * @brief Plugin class for the PluginTemplate plugin.
+ * @brief Plugin class for the HealthCheck plugin.
  */
 
 namespace APP\plugins\generic\healthCheck;
@@ -129,7 +129,7 @@ class HealthCheckPlugin extends GenericPlugin
             case 'settings':
 
                 // Load the custom form
-                $form = new PluginTemplateSettingsForm($this);
+                $form = new HealthCheckSettingsForm($this);
 
                 // Fetch the form the first time it loads, before
                 // the user has tried to save it
