@@ -27,7 +27,7 @@
     <div id="plugin-list-section">
         <ul id="plugin-list">
             {foreach from=$pluginList item=plugin}
-                <li>{$plugin.name|escape} ({$plugin.version})</li>
+                <li>{$plugin.name|escape} ({$plugin.version|escape})</li>
             {/foreach}
         </ul>
     </div>

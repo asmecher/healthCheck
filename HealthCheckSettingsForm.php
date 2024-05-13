@@ -120,6 +120,9 @@ class HealthCheckSettingsForm extends Form {
             ];
         }
 
+        $phpVersion = phpversion();
+        $errorLogLocation = ini_get('error_log');
+
         // Assign to template variable.
         $templateMgr->assign('pluginList', $list);
         return parent::fetch($request, $template, $display);
