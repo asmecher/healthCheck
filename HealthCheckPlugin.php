@@ -7,7 +7,7 @@
  * Copyright (c) 2017-2023 John Willinsky
  * Distributed under the GNU GPL v3. For full terms see the file docs/COPYING.
  *
- * @class PluginTemplatePlugin
+ * @class HealthCheckPlugin
  * @brief Plugin class for the PluginTemplate plugin.
  */
 
@@ -188,5 +188,5 @@ class HealthCheckPlugin extends GenericPlugin
 
 // For backwards compatibility -- expect this to be removed approx. OJS/OMP/OPS 3.6
 if (!PKP_STRICT_MODE) {
-    class_alias('\APP\plugins\generic\pluginTemplate\PluginTemplatePlugin', '\PluginTemplatePlugin');
+    class_alias('\APP\plugins\generic\healthCheck\HealthCheckPlugin', '\HealthCheckPlugin');
 }
