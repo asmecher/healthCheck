@@ -24,10 +24,15 @@
 
     <h3>{translate key="plugins.generic.healthCheck.activePlugins"}</h3>
 
+    <div id="server-environment-details">
+        <p><b>PHP Version:</b> {$phpVersion}</p>
+        <p><b>PHP Error Log:</b> {$phpErrorLog}</p>
+    </div>
+
     <div id="plugin-list-section">
         <ul id="plugin-list">
             {foreach from=$pluginList item=plugin}
-                <li>{$plugin.name|escape} ({$plugin.version})</li>
+                <li>{$plugin.name|escape} ({$plugin.version|escape})</li>
             {/foreach}
         </ul>
     </div>

@@ -87,7 +87,7 @@ class HealthCheckSettingsForm extends Form {
         $versionDao = DAORegistry::getDAO('VersionDAO');
 
         // Begin assembling markup for settings page.
-        $list = [];
+        $pluginList = [];
         foreach ($plugins as $plugin) {
 
             // Extract version for given plugin from version DAO.
@@ -97,20 +97,20 @@ class HealthCheckSettingsForm extends Form {
             $currentVersion = $versionDao->getCurrentVersion($productType, $productName);
 
             // Assemble list item.
-            $list[] = [
+            $pluginList[] = [
                 'name' => $plugin->getName(),
                 'version' => $currentVersion->getVersionString(),
             ];
         }
 
-        // Assign to template variable.
-        $templateMgr->assign('pluginList', $list);
+        // Fetch php version and error log location.
+        $phpVersion = phpversion();
+        $phpErrorLog = ini_get('error_log');
 
-        // Assign OJS configuration related items to the template
-        $templateMgr->assign([
-            'isSaltConfigured' => Config::getVar('security', 'salt') != null,
-        ]);
-
+        // Assign variables to template.
+        $templateMgr->assign('pluginList', $pluginList);
+        $templateMgr->assign('phpVersion', $phpVersion);
+        $templateMgr->assign('phpErrorLog',  $phpErrorLog);
         return parent::fetch($request, $template, $display);
     }
 
