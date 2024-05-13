@@ -22,3 +22,6 @@ msgstr "Publication Statement"
 
 msgid "plugins.generic.pluginTemplate.publicationStatement.description"
 msgstr "Add a publication statement that you would like to appear on every publication's landing page."
+
+msgid "plugins.generic.pluginTemplate.report"
+msgstr "Report"

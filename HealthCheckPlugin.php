@@ -15,12 +15,14 @@ namespace APP\plugins\generic\healthCheck;
 
 use APP\core\Application;
 use APP\core\Request;
+use APP\template\TemplateManager;
 use PKP\core\JSONMessage;
 use PKP\core\PKPString;
 use PKP\linkAction\LinkAction;
 use PKP\linkAction\request\AjaxModal;
 use PKP\plugins\GenericPlugin;
 use PKP\plugins\Hook;
+
 
 class HealthCheckPlugin extends GenericPlugin
 {
@@ -86,6 +88,7 @@ class HealthCheckPlugin extends GenericPlugin
         // Create a LinkAction that will make a request to the
         // plugin's `manage` method with the `settings` verb.
         $router = $request->getRouter();
+
         $linkAction = new LinkAction(
             'settings',
             new AjaxModal(
@@ -111,6 +114,28 @@ class HealthCheckPlugin extends GenericPlugin
         // Make it the first action to be consistent with
         // other plugins.
         array_unshift($actions, $linkAction);
+
+        $reportLinkAction = new LinkAction(
+            'report',
+            new AjaxModal(
+                $router->url(
+                    $request,
+                    null,
+                    null,
+                    'manage',
+                    null,
+                    [
+                        'verb' => 'report',
+                        'plugin' => $this->getName(),
+                        'category' => 'generic'
+                    ]
+                ),
+                $this->getDisplayName()
+            ),
+            __('plugins.generic.pluginTemplate.report'),
+            null
+        );
+        array_unshift($actions, $reportLinkAction);
 
         return $actions;
     }
@@ -144,6 +169,21 @@ class HealthCheckPlugin extends GenericPlugin
                     $form->execute();
                     return new JSONMessage(true);
                 }
+            case 'report':
+                $templateMgr = TemplateManager::getManager($request);
+                # retrieve the data here using OJS Models
+                $templateMgr->assign([
+                    # register here variables that will be used in templates
+                    # warning: these variables are global
+                    'ojs_version' => '123',
+                    'plugins' => [
+                        'plugin1',
+                        'plugin2',
+                    ]
+                ]);
+                # fetch method renders the template with the (assigned) variables
+                return new JSONMessage(true, $templateMgr->fetch($this->getTemplateResource('report.tpl')));
+
         }
         return parent::manage($args, $request);
     }
