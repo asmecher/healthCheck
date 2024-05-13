@@ -22,7 +22,7 @@
 	<!-- Always add the csrf token to secure your form -->
 	{csrf}
 
-	All Active Plugins:
+    <h3>{translate key="plugins.generic.healthCheck.activePlugins"}</h3>
 
     <div id="plugin-list-section">
         <ul id="plugin-list">
