@@ -25,7 +25,11 @@
 	All Active Plugins:
 
     <div id="plugin-list-section">
-        {$pluginList|strip_unsafe_html}
+        <ul id="plugin-list">
+            {foreach from=$pluginList item=plugin}
+                <li>{$plugin|escape}</li>
+            {/foreach}
+        </ul>
     </div>
 
 	{fbvFormButtons submitText="common.save"}

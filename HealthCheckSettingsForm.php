@@ -104,7 +104,7 @@ class HealthCheckSettingsForm extends Form {
         $versionDao = DAORegistry::getDAO('VersionDAO');
 
         // Begin assembling markup for settings page.
-        $list = '<ul id="plugin-list">';
+        $list = [];
         foreach ($plugins as $plugin) {
 
             // Extract version for given plugin from version DAO.
@@ -114,9 +114,8 @@ class HealthCheckSettingsForm extends Form {
             $currentVersion = $versionDao->getCurrentVersion($productType, $productName);
 
             // Assemble list item.
-            $list .= '<li>' . $plugin->getName() . ' (' . $currentVersion->getVersionString() . ')</li>';
+            $list[] =  $plugin->getName() . ' (' . $currentVersion->getVersionString() . ')';
         }
-        $list .= '</ul></div>';
 
         // Assign to template variable.
         $templateMgr->assign('pluginList', $list);
